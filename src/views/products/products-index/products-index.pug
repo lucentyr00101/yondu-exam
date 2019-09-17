@@ -1,1 +1,6 @@
-h1 Products
+v-row
+    v-col(md="4" lg="3" v-for="x in 10" :key="x")
+        product
+
+    v-snackbar(v-model="snackbar.visible" :color="snackbar.color" :timeout="1800" top right) {{ snackbar.message }}
+        v-btn(color="black" text @click="snackbar.visible = false") Close

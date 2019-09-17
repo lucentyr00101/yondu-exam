@@ -33,6 +33,11 @@ export default new Router({
           component: () => import('@/views/config/config-home')
         }
       ]
+    },
+    {
+      path: '/cart',
+      component: () => import('@/views/cart'),
+      name: 'cart'
     }
   ]
 })
