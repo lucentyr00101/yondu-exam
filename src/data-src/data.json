@@ -1,0 +1,157 @@
+{
+	"data": [{
+			"id": "03ce8e91-4fa7-4fa0-acfd-ed077bff46e6",
+			"title": "Mobile Phones",
+			"order": 2,
+			"parent_id": null
+		},
+		{
+			"id": "ae8b8f14-4212-4c80-b18b-505a9147cc44",
+			"title": "Samsung Galaxy M30",
+			"order": 2,
+			"price": 17342.00,
+			"sale_price": 16342.00,
+			"on_sale": false,
+			"parent_id": "570e892b-f796-4a3f-9fab-90c9cfe33c0e"
+		},
+		{
+			"id": "bc3a5856-ea93-4263-848e-0f1d528bff4f",
+			"title": "Laptops",
+			"order": 1,
+			"parent_id": null
+		},
+		{
+			"id": "ba2b4ff5-1653-4f3c-8a9a-280c75f25983",
+			"title": "Dell",
+			"order": 1,
+			"parent_id": "bc3a5856-ea93-4263-848e-0f1d528bff4f"
+		},
+		{
+			"id": "07213af9-8a71-4eac-b7d1-78f6adadcd73",
+			"title": "Lenovo",
+			"order": 2,
+			"parent_id": "bc3a5856-ea93-4263-848e-0f1d528bff4f"
+		},
+		{
+			"id": "43325a21-c271-46fe-97b9-e75bfd6bfa53",
+			"title": "Printers",
+			"order": 3,
+			"parent_id": null
+		},
+		{
+			"id": "ceb6a0ca-0fe5-4f0d-b48f-621a7910135f",
+			"title": "Dell Inspiron 3467",
+			"order": 1,
+			"price": 35777.00,
+			"sale_price": 34999.00,
+			"on_sale": false,
+			"parent_id": "ba2b4ff5-1653-4f3c-8a9a-280c75f25983"
+		},
+		{
+			"id": "891de40d-44be-4b46-ba4a-e03f074120e7",
+			"title": "Dell XPS 13-9370",
+			"order": 2,
+			"price": 50000.00,
+			"sale_price": 47999.00,
+			"on_sale": true,
+			"parent_id": "ba2b4ff5-1653-4f3c-8a9a-280c75f25983"
+		},
+		{
+			"id": "10b43493-d095-47e1-bdcb-55312abba9d9",
+			"title": "Dell Latititude E6420",
+			"order": 3,
+			"price": 17499.00,
+			"sale_price": 15899.00,
+			"on_sale": false,
+			"parent_id": "ba2b4ff5-1653-4f3c-8a9a-280c75f25983"
+		},
+		{
+			"id": "4f8f9744-4754-4311-8102-992cd0986bcc",
+			"title": "Lenovo E480",
+			"price": 42998.00,
+			"sale_price": 41900.00,
+			"on_sale": false,
+			"parent_id": "07213af9-8a71-4eac-b7d1-78f6adadcd73"
+		},
+		{
+			"id": "5d9b638c-d753-46b8-bd90-7d13f45317a7",
+			"title": "Lenovo Ideapad 330S",
+			"price": 28995.00,
+			"sale_price": 26995.00,
+			"on_sale": true,
+			"parent_id": "07213af9-8a71-4eac-b7d1-78f6adadcd73"
+		},
+		{
+			"id": "570e892b-f796-4a3f-9fab-90c9cfe33c0e",
+			"title": "Samsung",
+			"order": 2,
+			"parent_id": "03ce8e91-4fa7-4fa0-acfd-ed077bff46e6"
+		},
+		{
+			"id": "80d78430-a213-49f0-83b5-94572d56f2b8",
+			"title": "Apple",
+			"order": 1,
+			"parent_id": "03ce8e91-4fa7-4fa0-acfd-ed077bff46e6"
+		},
+		{
+			"id": "1b5c3d53-6c00-4263-83c3-0d5674c013d4",
+			"title": "Epson Work Force Pro",
+			"order": 1,
+			"price": 14888.00,
+			"sale_price": 13300.00,
+			"on_sale": true,
+			"parent_id": "43325a21-c271-46fe-97b9-e75bfd6bfa53"
+		},
+		{
+			"id": "ab6cad91-8fe3-4d8c-8ca9-f9ede27bc4d8",
+			"title": "Samsung Galaxy A50",
+			"order": 1,
+			"price": 15990.00,
+			"sale_price": 14000.00,
+			"on_sale": false,
+			"parent_id": "570e892b-f796-4a3f-9fab-90c9cfe33c0e"
+		},
+		{
+			"id": "292ca5c8-71b9-4f5e-aa83-ba801c3c3214",
+			"title": "Samsung Galaxy J8",
+			"order": 4,
+			"price": 6831.00,
+			"sale_price": 5999.00,
+			"on_sale": true,
+			"parent_id": "570e892b-f796-4a3f-9fab-90c9cfe33c0e"
+		},
+		{
+			"id": "aec71e85-6ca9-4179-b6a9-cdd31f757f84",
+			"title": "Samsung Galaxy Note10",
+			"order": 3,
+			"price": 43674.99,
+			"sale_price": 42999.00,
+			"on_sale": false,
+			"parent_id": "570e892b-f796-4a3f-9fab-90c9cfe33c0e"
+		},
+		{
+			"id": "de6e5042-8662-440b-b6f2-771663d396b8",
+			"title": "iPhone XS Max",
+			"order": 2,
+			"price": 84800.00,
+			"sale_price": 83500.00,
+			"on_sale": false,
+			"parent_id": "80d78430-a213-49f0-83b5-94572d56f2b8"
+		},
+		{
+			"id": "9d8e7921-ac87-46e0-9619-038d8ef1f11e",
+			"title": "iPhone 7 Plus",
+			"order": 1,
+			"price": 38949.00,
+			"sale_price": 37500.00,
+			"on_sale": false,
+			"parent_id": "80d78430-a213-49f0-83b5-94572d56f2b8"
+		},
+		{
+			"id": "43325a21-c271-46fe-97b9-e75bfd6bfa53",
+			"title": "Epson",
+			"order": 1,
+			"parent_id": "43325a21-c271-46fe-97b9-e75bfd6bfa53"
+		}
+	]
+}

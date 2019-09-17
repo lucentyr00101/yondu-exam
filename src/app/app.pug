@@ -1,0 +1,27 @@
+v-app
+
+    v-navigation-drawer(app clipped v-model="drawer")
+        v-list(rounded)
+            v-subheader MENU
+            v-list-item(exact :to="{ name: 'home' }")
+                v-list-item-icon
+                    v-icon mdi-home
+                v-list-item-content Home
+            v-list-item(v-for="menu in menuItems" :to="menu.link" :key="menu.title")
+                v-list-item-icon
+                    v-icon {{ menu.icon }}
+                v-list-item-content {{ menu.title }}
+
+    v-app-bar(app clipped-left)
+        v-app-bar-nav-icon(@click.stop="drawer = !drawer")
+        v-toolbar-title Vue
+        .flex-grow-1
+        v-btn(outlined color="success")
+            v-icon(left) mdi-cart
+            | Show Cart
+
+    v-content
+        v-container(fluid)
+            router-view
+
+    v-footer(app)
