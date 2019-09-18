@@ -12,7 +12,16 @@ export default {
                 count: 0,
                 title: ''
             },
-            item: {},
+            item: {
+                id: '',
+                title: '',
+                order: '',
+                parent_id: '',
+                on_sale: false,
+                price: '',
+                sale_price: '',
+                count: 0,
+            },
             modals: {
                 category: false,
                 brand: false,

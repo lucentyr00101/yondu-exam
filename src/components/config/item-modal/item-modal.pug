@@ -1,8 +1,13 @@
 v-dialog(v-model="dialog" @click:outside="closeModal" max-width="900px")
     v-card
         v-card-title.headline Item Modal
-        v-card-text Lorem ipsum dolor sit amet.
+        v-card-text
+            v-text-field(label="Category Title" v-model="item.title")
+            v-text-field(label="Category Order" disabled v-model="item.count + 1")
+            v-text-field(label="Price" v-model="item.price")
+            v-text-field(label="Sale Price" v-model="item.sale_price")
+            v-switch(v-model="item.on_sale" label="On Sale?" color="success")
         v-card-actions
             .flex-grow-1
-            v-btn(color="green darken-1" @click="closeModal") Disagree
-            v-btn(color="green darken-1" @click="closeModal") Agree
+            v-btn(color="red darken-1" @click="closeModal") Close
+            v-btn(color="green darken-1" @click="submitItem") Submit

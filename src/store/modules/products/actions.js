@@ -65,3 +65,16 @@ export const addNewBrand = ({commit}, payload) => {
     }
     commit('addNewBrand', newBrand)
 }
+
+export const addNewItem = ({commit}, payload) => {
+    const newItem = {
+        id: uuidv4(),
+        title: payload.title,
+        order: payload.count + 1,
+        parent_id: payload.parent_id,
+        on_sale: payload.on_sale,
+        price: payload.price,
+        sale_price: payload.sale_price
+    }
+    commit('addNewItem', newItem)
+}

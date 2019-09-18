@@ -13,3 +13,8 @@ export const addNewBrand = (state, payload) => {
         }
     });
 }
+
+export const addNewItem = (state, payload) => {
+    console.log(state)
+    console.log(payload)
+}
