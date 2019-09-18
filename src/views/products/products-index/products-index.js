@@ -28,7 +28,6 @@ export default {
     },
     mounted() {
         Event.$on('addToCartSuccess', productName => {
-            console.log('add to cart success')
             this.showSnackbar(`${productName} added to cart. `, 'success')
         })
     },

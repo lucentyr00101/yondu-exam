@@ -1,8 +1,14 @@
-v-row
-    template(v-for="category in getProducts")
-        template(v-for="brand in category.brands")
-            v-col(md="4" lg="3" v-for="(product, i) in brand.items" :key="product.id")
-                product(:product="product")
+div
+    v-tabs.elevation-2(v-model="tab" dark)
+        v-tabs-slider
+        v-tab(v-for="(category, a) in getProducts" :key="a" :href="`#tab-${a}`") {{ category.title }}
+        v-tab-item(v-for="(category, b) in getProducts" :key="b" :value="`tab-${b}`")
+            v-row(v-for="(brand, c) in category.brands" :key="c")
+                v-divider
+                v-col(lg="12")
+                    h1.text-center {{ brand.title }}
+                v-col(md="4" lg="3" v-for="(product, i) in brand.items" :key="product.id" )
+                    product(:product="product")
 
-    v-snackbar(v-model="snackbar.visible" :color="snackbar.color" :timeout="1800" top right) {{ snackbar.message }}
-        v-btn(color="black" text @click="snackbar.visible = false") Close
+                v-snackbar(v-model="snackbar.visible" :color="snackbar.color" :timeout="1800" top right) {{ snackbar.message }}
+                    v-btn(color="black" text @click="snackbar.visible = false") Close
