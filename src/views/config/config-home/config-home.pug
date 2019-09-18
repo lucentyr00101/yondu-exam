@@ -1,1 +1,33 @@
-h1 Config Home
+v-list
+    v-list-group(v-for="(category, a) in getProducts" :key="a")
+        template(v-slot:activator)
+            v-list-item-title {{ category.title }}
+        v-list-group(no-action sub-group v-for="(brand, b) in category.brands" :key="b")
+            template(v-slot:activator)
+                v-list-item-content
+                    v-list-item-title {{ brand.title }}
+                v-list-item-action
+                    v-btn(icon small color="blue")
+                        v-icon(small) mdi-pencil
+                    v-btn(icon small color="red")
+                        v-icon(small) mdi-delete
+            v-list-item(v-for="(item, c) in brand.items" :key="c" link)
+                v-list-item-title {{ item.title }}
+                v-list-item-action
+                    v-btn(icon small color="blue")
+                        v-icon(small) mdi-pencil
+                    v-btn(icon small color="red")
+                        v-icon(small) mdi-delete
+
+//- v-expansion-panels(accordion)
+//-     v-expansion-panel(v-for="(category, a) in getProducts" :key="a")
+//-         v-expansion-panel-header {{ category.title }}
+//-         v-expansion-panel-content
+//-             v-expansion-panels(accordion)
+//-                 v-expansion-panel(v-for="(brand, b) in category.brands" :key="b")
+//-                     v-expansion-panel-header {{ brand.title }}
+//-                     v-expansion-panel-content
+//-                         v-expansion-panels(accordion)
+//-                             v-expansion-panel(v-for="(item, c) in brand.items" :key="b")
+//-                                 v-expansion-panel-header {{ item.title }}
+//-                                 v-expansion-panel-content

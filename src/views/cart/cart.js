@@ -13,7 +13,7 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'getCart'
+            'getCart', 'getTotalCost'
         ])
-    }
+    },
 }

@@ -1,7 +1,8 @@
 div
     div(v-if="items" v-for="item in getCart")
-        p {{ item.title }} - {{ item.quantity }}
+        p {{ item.title }} - {{ item.quantity }} - {{ item.unit_price }} - {{ item.total_cost }}
         v-btn(color="red" small @click="reduceQuantity(item)")
             v-icon(small) mdi-minus
         v-btn(color="blue" small @click="increaseQuantity(item)")
             v-icon(small) mdi-plus
+    h1 Total Cost: {{ getTotalCost }}

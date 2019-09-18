@@ -4,7 +4,8 @@ import * as actions from './actions'
 
 export default {
     state: {
-        cart_items: []
+        cart_items: [],
+        total_cost: 0
     },
     mutations, actions, getters
 }
