@@ -16,16 +16,19 @@ export const clearCart = state => {
 
 export const reduceQuantity = (state, payload) => {
     payload.quantity--
-    let index = state.cart_items.indexOf(payload)
-    console.log(payload.quantity)
+    const index = state.cart_items.indexOf(payload)
     if(payload.quantity === 0 ){
         state.cart_items.splice(index, 1)
     } else {
-        state.cart_items[index] = payload
+        //https://stackoverflow.com/questions/40860592/vuex-getter-not-updating
+        //Vue is unable to react to mutations on state arrays (by index).
+        //splice the value in at an index:
+        state.cart_items.splice(index, 1, payload)
     }
 }
 
 export const increaseQuantity = (state, payload) => {
-    let index = state.cart_items.indexOf(payload)
-    state.cart_items[index].quantity++
+    payload.quantity++
+    const index = state.cart_items.indexOf(payload)
+    state.cart_items.splice(index, 1, payload)
 }

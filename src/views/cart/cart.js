@@ -1,14 +1,19 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-    computed: {
-        ...mapGetters([
-            'getCart'
-        ])
+    data() {
+        return {
+            items: []
+        }
     },
     methods: {
         ...mapActions([
             'reduceQuantity', 'increaseQuantity'
+        ])
+    },
+    computed: {
+        ...mapGetters([
+            'getCart'
         ])
     }
 }
