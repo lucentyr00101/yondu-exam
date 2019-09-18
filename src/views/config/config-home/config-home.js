@@ -5,5 +5,5 @@ export default {
         ...mapGetters([
             'getProducts'
         ])
-    }
+    },
 }

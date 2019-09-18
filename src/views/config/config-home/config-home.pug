@@ -1,7 +1,7 @@
 v-container
     v-row
         v-col(lg="12")
-            v-list
+            v-list.mx-auto(max-width="850px")
                 v-list-group(v-for="(category, a) in getProducts" :key="a")
                     template(v-slot:activator)
                         v-list-item-title {{ category.title }}
@@ -26,6 +26,15 @@ v-container
                                     v-icon(small) mdi-pencil
                                 v-btn(icon small color="red")
                                     v-icon(small) mdi-delete
+                        v-list-item
+                            v-list-item-title
+                                v-btn(color="success") Add New Item
+                    v-list-item
+                            v-list-item-title
+                                v-btn(color="success") Add New Brand
+                v-list-item
+                    v-list-item-title
+                        v-btn(color="success") Add New Category
 
 //- v-expansion-panels(accordion)
 //-     v-expansion-panel(v-for="(category, a) in getProducts" :key="a")
