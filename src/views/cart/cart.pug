@@ -1,2 +1,7 @@
 div
-    p(v-for="item in getCart") {{ item.title }} - {{ item.quantity }}
+    div(v-for="item in getCart")
+        p {{ item.title }} - {{ item.quantity }}
+        v-btn(color="red" small @click="reduceQuantity(item)")
+            v-icon(small) mdi-minus
+        v-btn(color="blue" small @click="increaseQuantity(item)")
+            v-icon(small) mdi-plus

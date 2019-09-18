@@ -13,3 +13,19 @@ export const addItemToCart = (state, payload) => {
 export const clearCart = state => {
     state.cart_items = []
 }
+
+export const reduceQuantity = (state, payload) => {
+    payload.quantity--
+    let index = state.cart_items.indexOf(payload)
+    console.log(payload.quantity)
+    if(payload.quantity === 0 ){
+        state.cart_items.splice(index, 1)
+    } else {
+        state.cart_items[index] = payload
+    }
+}
+
+export const increaseQuantity = (state, payload) => {
+    let index = state.cart_items.indexOf(payload)
+    state.cart_items[index].quantity++
+}

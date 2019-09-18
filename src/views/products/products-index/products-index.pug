@@ -1,12 +1,13 @@
 div
-    v-tabs.elevation-2(v-model="tab" dark)
+    v-tabs.elevation-2(dark)
         v-tabs-slider
         v-tab(v-for="(category, a) in getProducts" :key="a" :href="`#tab-${a}`") {{ category.title }}
         v-tab-item(v-for="(category, b) in getProducts" :key="b" :value="`tab-${b}`")
             v-row(v-for="(brand, c) in category.brands" :key="c")
-                v-divider
                 v-col(lg="12")
+                    v-divider
                     h1.text-center {{ brand.title }}
+                    v-divider
                 v-col(md="4" lg="3" v-for="(product, i) in brand.items" :key="product.id" )
                     product(:product="product")
 
