@@ -55,3 +55,13 @@ function uuidv4() {
         return v.toString(16);
     });
 }
+
+export const addNewBrand = ({commit}, payload) => {
+    const newBrand = {
+        id: uuidv4(),
+        title: payload.title,
+        order: payload.count +1,
+        parent_id: payload.parent_id
+    }
+    commit('addNewBrand', newBrand)
+}

@@ -1,8 +1,10 @@
 v-dialog(v-model="dialog" @click:outside="closeModal" max-width="900px")
     v-card
-        v-card-title.headline Brand Modal
-        v-card-text Lorem ipsum dolor sit amet.
+        v-card-title.headline Add New Brand
+        v-card-text
+            v-text-field(label="Category Title" v-model="brand.title")
+            v-text-field(label="Category Order" disabled v-model="brand.count + 1")
         v-card-actions
             .flex-grow-1
-            v-btn(color="green darken-1" @click="closeModal") Disagree
-            v-btn(color="green darken-1" @click="closeModal") Agree
+            v-btn(color="red darken-1" @click="closeModal") Close
+            v-btn(color="green darken-1" @click="insertNewBrand") Submit

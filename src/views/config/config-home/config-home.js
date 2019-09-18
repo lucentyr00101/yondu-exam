@@ -7,7 +7,11 @@ export default {
                 title: '',
                 count: 0,
             },
-            brand: {},
+            brand: {
+                parent_id: '',
+                count: 0,
+                title: ''
+            },
             item: {},
             modals: {
                 category: false,

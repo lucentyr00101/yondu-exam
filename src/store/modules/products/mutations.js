@@ -5,3 +5,11 @@ export const setProducts = (state, payload) => {
 export const addNewCategory =(state, payload) => {
     state.items.push(payload)
 }
+
+export const addNewBrand = (state, payload) => {
+    state.items.forEach(category => {
+        if(category.id === payload.parent_id) {
+            category.brands.push(payload)
+        }
+    });
+}

@@ -31,12 +31,12 @@ v-container
                                 v-btn(color="success" @click.stop="modals.item = true") Add New Item
                     v-list-item
                             v-list-item-title
-                                v-btn(color="success" @click.stop="modals.brand = true") Add New Brand
+                                v-btn(color="success" @click.stop="modals.brand = true, brand.parent_id = category.id, brand.count = category.brands.length") Add New Brand
                 v-list-item
                     v-list-item-title
                         v-btn(color="success" @click.stop="modals.category = true, category.count = getProducts.length") Add New Category
     category-modal(:dialog="modals.category" :category="category")
-    brand-modal(:dialog="modals.brand")
+    brand-modal(:dialog="modals.brand" :brand="brand")
     item-modal(:dialog="modals.item")
 
 //- v-expansion-panels(accordion)
