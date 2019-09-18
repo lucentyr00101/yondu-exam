@@ -28,13 +28,16 @@ v-container
                                     v-icon(small) mdi-delete
                         v-list-item
                             v-list-item-title
-                                v-btn(color="success") Add New Item
+                                v-btn(color="success" @click.stop="modals.item = true") Add New Item
                     v-list-item
                             v-list-item-title
-                                v-btn(color="success") Add New Brand
+                                v-btn(color="success" @click.stop="modals.brand = true") Add New Brand
                 v-list-item
                     v-list-item-title
-                        v-btn(color="success") Add New Category
+                        v-btn(color="success" @click.stop="modals.category = true, category.count = getProducts.length") Add New Category
+    category-modal(:dialog="modals.category" :category="category")
+    brand-modal(:dialog="modals.brand")
+    item-modal(:dialog="modals.item")
 
 //- v-expansion-panels(accordion)
 //-     v-expansion-panel(v-for="(category, a) in getProducts" :key="a")

@@ -1,0 +1,10 @@
+v-dialog(v-model="dialog" @click:outside="closeModal" max-width="900px")
+    v-card
+        v-card-title.headline Add New Category
+        v-card-text
+            v-text-field(label="Category Title" v-model="category.title")
+            v-text-field(label="Category Order" disabled v-model="category.count + 1")
+        v-card-actions
+            .flex-grow-1
+            v-btn(color="red darken-1" @click="closeModal") Close
+            v-btn(color="green darken-1" @click="submitCategory") Submit
