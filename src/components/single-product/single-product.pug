@@ -1,9 +1,16 @@
-v-card.mx-auto
+v-card.mx-auto.product-card
     v-list-item
         v-list-item-content
-            v-list-item-title.headline Product Title
+            v-list-item-title.headline {{ product.title }}
+                v-chip.ml-2(color="red" text-color="white" v-if="product.on_sale")
+                    v-avatar(left)
+                        v-icon mdi-currency-usd
+                    | SALE ! !
     v-img(src="https://dummyimage.com/600x400/000/fff.png")
-    v-card-text Lorem ipsum dolor sit amet.
+    v-card-text
+        p
+            span.mr-3(:class="{ on_sale: product.on_sale }") &#8369; {{ product.price.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
+            span(v-if="product.on_sale") &#8369; {{ product.sale_price.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
     v-card-actions
         v-btn(color="red lighten-1" block @click="addToCart")
             v-icon(left) mdi-cart-plus
