@@ -15,6 +15,9 @@ npm run serve
 npm run build
 ```
 
+### Deploying to a server
+Copy the contents of the dist folder to your server.
+
 ### Run your tests
 ```
 npm run test
@@ -23,6 +26,14 @@ npm run test
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### If deploying to a server inside a subdirectory of the root folder
+create vue.config.js in the root of the project folder then add this
+```
+module.exports = {
+    publicPath: '/subdirectory-folder-here/'
+}
 ```
 
 ### Customize configuration
