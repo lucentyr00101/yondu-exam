@@ -8,7 +8,7 @@ v-container
                         v-list-item-action
                             v-btn(icon small color="blue")
                                 v-icon(small) mdi-pencil
-                            v-btn(icon small color="red")
+                            v-btn(icon small color="red" @click.stop="deleteCategory(category)")
                                 v-icon(small) mdi-delete
                     v-list-group(no-action sub-group v-for="(brand, b) in category.brands" :key="b")
                         template(v-slot:activator)
@@ -17,24 +17,24 @@ v-container
                             v-list-item-action
                                 v-btn(icon small color="blue")
                                     v-icon(small) mdi-pencil
-                                v-btn(icon small color="red")
+                                v-btn(icon small color="red" @click.stop="deleteBrand(brand)")
                                     v-icon(small) mdi-delete
                         v-list-item(v-for="(item, c) in brand.items" :key="c" link)
                             v-list-item-title {{ item.title }}
                             v-list-item-action
                                 v-btn(icon small color="blue")
                                     v-icon(small) mdi-pencil
-                                v-btn(icon small color="red")
+                                v-btn(icon small color="red" @click.stop="deleteItem(item)")
                                     v-icon(small) mdi-delete
                         v-list-item
                             v-list-item-title
-                                v-btn(color="success" @click.stop="modals.item = true, item.parent_id = brand.id, item.count = brand.items.length") Add New Item
+                                v-btn(color="success" @click.stop="triggerItemModal(brand.items.length, brand.id)") Add New Item
                     v-list-item
                             v-list-item-title
-                                v-btn(color="success" @click.stop="modals.brand = true, brand.parent_id = category.id, brand.count = category.brands.length") Add New Brand
+                                v-btn(color="success" @click.stop="triggerBrandModal(category.brands.length)") Add New Brand
                 v-list-item
                     v-list-item-title
-                        v-btn(color="success" @click.stop="modals.category = true, category.count = getProducts.length") Add New Category
+                        v-btn(color="success" @click.stop="triggerCategoryModal") Add New Category
     category-modal(:dialog="modals.category" :category="category")
     brand-modal(:dialog="modals.brand" :brand="brand")
     item-modal(:dialog="modals.item" :item="item")

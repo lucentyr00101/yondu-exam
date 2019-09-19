@@ -1,4 +1,5 @@
 import shopItems from '@/data-src/data.json'
+import _ from 'lodash'
 
 export const setProducts = ({commit}) => {
     const data = restructureData()
@@ -8,27 +9,27 @@ export const setProducts = ({commit}) => {
 function restructureData() {
     let items = []
 
-    shopItems.data.sort((a, b) => parseFloat(a.order) - parseFloat(b.order));
-    
-    shopItems.data.forEach(category => {
+    shopItems.data = _.sortBy(shopItems.data, o => { return o.order })
+
+    _.forEach(shopItems.data, category => {
         if(category.parent_id === null) {
             category.brands = []
             items.push(category)
         }
     })
 
-    shopItems.data.forEach(item => {
-        items.forEach(category => {
+    _.forEach(shopItems.data, item => {
+        _.forEach(items, category => {
             if(item.parent_id === category.id) {
                 category.brands.push(item)
             }
         })
     })
 
-    items.forEach(category => {
-        category.brands.forEach(brand => {
+    _.forEach(items, category => {
+        _.forEach(category.brands, brand => {
             brand.items = []
-            shopItems.data.forEach(item => {
+            _.forEach(shopItems.data, item => {
                 if(brand.id === item.parent_id && item.price) {
                     brand.items.push(item)
                 }
@@ -67,6 +68,7 @@ export const addNewBrand = ({commit}, payload) => {
 }
 
 export const addNewItem = ({commit}, payload) => {
+    console.log(payload)
     const newItem = {
         id: uuidv4(),
         title: payload.title,
@@ -77,4 +79,16 @@ export const addNewItem = ({commit}, payload) => {
         sale_price: payload.sale_price
     }
     commit('addNewItem', newItem)
+}
+
+export const deleteCategory = ({commit}, payload) => {
+    commit('deleteCategory', payload)
+}
+
+export const deleteBrand = ({commit}, payload) => {
+    commit('deleteBrand', payload)
+}
+
+export const deleteItem = ({commit}, payload) => {
+    commit('deleteItem', payload)
 }

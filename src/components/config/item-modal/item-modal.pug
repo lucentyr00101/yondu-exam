@@ -1,4 +1,4 @@
-v-dialog(v-model="dialog" @click:outside="closeModal" max-width="900px")
+v-dialog(v-model="dialog" @click:outside="closeModal" max-width="900px" @keydown.escape="closeModal")
     v-card
         v-card-title.headline Item Modal
         v-card-text

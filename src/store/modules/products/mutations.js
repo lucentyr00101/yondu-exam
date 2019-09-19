@@ -25,3 +25,30 @@ export const addNewItem = (state, payload) => {
         })
     })
 }
+
+export const deleteCategory = (state, payload) => {
+    const index = _.indexOf(state.items, payload)
+    state.items.splice(index, 1)
+}
+
+export const deleteBrand = (state, payload) => {
+    _.forEach(state.items, category => {
+        if(payload.parent_id === category.id) {
+            const index = _.indexOf(category.brands, payload)
+            category.brands.splice(index, 1)
+        }
+    })
+}
+
+export const deleteItem = (state, payload) => {
+    _.forEach(state.items, category => {
+        _.forEach(category.brands, brand => {
+            _.forEach(brand.items, item => {
+                if(item.id === payload.id) {
+                    const index = _.indexOf(brand.items, payload)
+                    brand.items.splice(index, 1)
+                }
+            })
+        })
+    })
+}

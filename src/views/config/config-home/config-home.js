@@ -1,4 +1,4 @@
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
     data() {
@@ -27,6 +27,26 @@ export default {
                 brand: false,
                 item: false
             }
+        }
+    },
+    methods: {
+        ...mapActions([
+            'deleteCategory', 'deleteBrand', 'deleteItem'
+        ]),
+        triggerCategoryModal() {
+            this.modals.category = true
+            this.category.count = this.getProducts.length
+        },
+        triggerBrandModal(length) {
+            this.modals.brand = true
+            this.brand.parent_id = this.category.id
+            this.brand.count = length
+        },
+        triggerItemModal(length, brand_id) {
+            this.modals.item = true
+            this.item.parent_id = brand_id
+            this.item.count = length
+            console.log(this.item.parent_id)
         }
     },
     computed: {
