@@ -13,5 +13,5 @@ export default {
             this.addNewBrand(this.brand)
             this.closeModal()
         }
-    }
+    },
 }

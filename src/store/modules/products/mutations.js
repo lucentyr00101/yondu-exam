@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export const setProducts = (state, payload) => {
     state.items = payload
 }
@@ -15,6 +17,11 @@ export const addNewBrand = (state, payload) => {
 }
 
 export const addNewItem = (state, payload) => {
-    console.log(state)
-    console.log(payload)
+    _.forEach(state.items, category => {
+        _.forEach(category.brands, brand => {
+            if (brand.id === payload.parent_id) {
+                brand.items.push(payload)
+            }
+        })
+    })
 }
