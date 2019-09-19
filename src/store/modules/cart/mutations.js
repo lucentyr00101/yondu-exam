@@ -1,25 +1,23 @@
+import _ from 'lodash'
+
 export const addItemToCart = (state, payload) => {
-    const index = state.cart_items.indexOf(payload)
+    const index = _.indexOf(state.cart_items, payload)
+
     let unit_price = 0
 
-    if(payload.on_sale) {
-        unit_price = payload.sale_price
-    } else {
-        unit_price = payload.price
-    }
+    unit_price = payload.on_sale ? payload.sale_price : payload.price
 
     if(index === -1) {
-        //not in array
         payload.quantity = 1
         payload.unit_price = unit_price
-        payload.total_cost = payload.unit_price * payload.quantity
+        payload.total_cost = payload.unit_price
         state.cart_items.unshift(payload)
     } else {
-        //in array
-        payload.unit_price = unit_price
-        payload.total_cost = payload.unit_price * (payload.quantity + 1)
         state.cart_items[index]['quantity'] += 1
+        state.cart_items[index]['total_cost'] = state.cart_items[index]['quantity'] * state.cart_items[index]['unit_price']
     }
+
+    state.total_cost = computeTotalCost(state.cart_items)
 }
 
 export const clearCart = state => {
@@ -38,6 +36,8 @@ export const reduceQuantity = (state, payload) => {
         payload.total_cost = payload.unit_price * payload.quantity
         state.cart_items.splice(index, 1, payload)
     }
+
+    state.total_cost = computeTotalCost(state.cart_items)
 }
 
 export const increaseQuantity = (state, payload) => {
@@ -45,8 +45,14 @@ export const increaseQuantity = (state, payload) => {
     const index = state.cart_items.indexOf(payload)
     payload.total_cost = payload.unit_price * payload.quantity
     state.cart_items.splice(index, 1, payload)
+
+    state.total_cost = computeTotalCost(state.cart_items)
 }
 
-export const setTotalCost = (state, payload) => {
-    state.total_cost = payload
+function computeTotalCost(items) {
+    let total = 0
+    _.forEach(items, item => {
+        total += item.total_cost
+    })
+    return total
 }
