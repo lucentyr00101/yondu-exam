@@ -45,7 +45,8 @@ export const addNewCategory = ({commit}, payload) => {
         id: uuidv4(),
         title: payload.title,
         order: payload.count + 1,
-        parent_id: null
+        parent_id: null,
+        brands: []
     }
     commit('addNewCategory', newCategory)
 }
@@ -58,17 +59,18 @@ function uuidv4() {
 }
 
 export const addNewBrand = ({commit}, payload) => {
+    console.log(payload)
     const newBrand = {
         id: uuidv4(),
         title: payload.title,
         order: payload.count +1,
-        parent_id: payload.parent_id
+        parent_id: payload.parent_id,
+        items: []
     }
     commit('addNewBrand', newBrand)
 }
 
 export const addNewItem = ({commit}, payload) => {
-    console.log(payload)
     const newItem = {
         id: uuidv4(),
         title: payload.title,

@@ -31,7 +31,7 @@ v-container
                                 v-btn(color="success" @click.stop="triggerItemModal(brand.items.length, brand.id)") Add New Item
                     v-list-item
                             v-list-item-title
-                                v-btn(color="success" @click.stop="triggerBrandModal(category.brands.length)") Add New Brand
+                                v-btn(color="success" @click.stop="triggerBrandModal(category.brands.length, category.id)") Add New Brand
                 v-list-item
                     v-list-item-title
                         v-btn(color="success" @click.stop="triggerCategoryModal") Add New Category

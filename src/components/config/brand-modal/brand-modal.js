@@ -10,6 +10,7 @@ export default {
             Event.$emit('brandModalClosed')
         },
         insertNewBrand() {
+            console.log(this.brand)
             this.addNewBrand(this.brand)
             this.closeModal()
         }

@@ -37,16 +37,15 @@ export default {
             this.modals.category = true
             this.category.count = this.getProducts.length
         },
-        triggerBrandModal(length) {
+        triggerBrandModal(length, category_id) {
             this.modals.brand = true
-            this.brand.parent_id = this.category.id
+            this.brand.parent_id = category_id
             this.brand.count = length
         },
         triggerItemModal(length, brand_id) {
             this.modals.item = true
             this.item.parent_id = brand_id
             this.item.count = length
-            console.log(this.item.parent_id)
         }
     },
     computed: {
@@ -61,6 +60,10 @@ export default {
     },
     mounted() {
         Event.$on('categoryModalClosed', () => {
+            this.category = {
+                title: '',
+                count: 0,
+            }
             this.modals.category = false
         })
         Event.$on('brandModalClosed', () => {
