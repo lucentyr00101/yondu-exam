@@ -1,16 +1,16 @@
 import { mapActions } from "vuex"
 
 export default {
-    props: ['dialog', 'item'],
+    props: ['dialog', 'item', 'create'],
     methods: {
         ...mapActions([
-            'addNewItem'
+            'addNewItem', 'editItem'
         ]),
         closeModal() {
             Event.$emit('itemModalClosed')
         },
         submitItem() {
-            this.addNewItem(this.item)
+            this.create ? this.addNewItem(this.item) : this.editItem(this.item)
             this.closeModal()
         }
     }

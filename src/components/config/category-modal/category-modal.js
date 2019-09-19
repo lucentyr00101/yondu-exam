@@ -1,17 +1,17 @@
 import { mapActions } from "vuex"
 
 export default {
-    props: ['dialog', 'category'],
+    props: ['dialog', 'category', 'create'],
     methods: {
         ...mapActions([
-            'addNewCategory'
+            'addNewCategory', 'editCategory'
         ]),
         closeModal() {
             Event.$emit('categoryModalClosed')
         },
         submitCategory() {
-            this.addNewCategory(this.category)
+            this.create ? this.addNewCategory(this.category) : this.editCategory(this.category)
             this.closeModal()
         }
-    }
+    },
 }

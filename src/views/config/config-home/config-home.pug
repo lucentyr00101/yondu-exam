@@ -6,7 +6,7 @@ v-container
                     template(v-slot:activator)
                         v-list-item-title {{ category.title }}
                         v-list-item-action
-                            v-btn(icon small color="blue")
+                            v-btn(icon small color="blue" @click.stop="editCategory(category)")
                                 v-icon(small) mdi-pencil
                             v-btn(icon small color="red" @click.stop="deleteCategory(category)")
                                 v-icon(small) mdi-delete
@@ -15,14 +15,14 @@ v-container
                             v-list-item-content
                                 v-list-item-title {{ brand.title }}
                             v-list-item-action
-                                v-btn(icon small color="blue")
+                                v-btn(icon small color="blue" @click="editBrand(brand)")
                                     v-icon(small) mdi-pencil
                                 v-btn(icon small color="red" @click.stop="deleteBrand(brand)")
                                     v-icon(small) mdi-delete
                         v-list-item(v-for="(item, c) in brand.items" :key="c" link)
                             v-list-item-title {{ item.title }}
                             v-list-item-action
-                                v-btn(icon small color="blue")
+                                v-btn(icon small color="blue" @click.stop="editItem(item)")
                                     v-icon(small) mdi-pencil
                                 v-btn(icon small color="red" @click.stop="deleteItem(item)")
                                     v-icon(small) mdi-delete
@@ -35,9 +35,9 @@ v-container
                 v-list-item
                     v-list-item-title
                         v-btn(color="success" @click.stop="triggerCategoryModal") Add New Category
-    category-modal(:dialog="modals.category" :category="category")
-    brand-modal(:dialog="modals.brand" :brand="brand")
-    item-modal(:dialog="modals.item" :item="item")
+    category-modal(:dialog="modals.category" :category="category" :create="create")
+    brand-modal(:dialog="modals.brand" :brand="brand" :create="create")
+    item-modal(:dialog="modals.item" :item="item" :create="create")
 
 //- v-expansion-panels(accordion)
 //-     v-expansion-panel(v-for="(category, a) in getProducts" :key="a")

@@ -44,7 +44,7 @@ export const addNewCategory = ({commit}, payload) => {
     const newCategory = {
         id: uuidv4(),
         title: payload.title,
-        order: payload.count + 1,
+        order: payload.order,
         parent_id: null,
         brands: []
     }
@@ -63,7 +63,7 @@ export const addNewBrand = ({commit}, payload) => {
     const newBrand = {
         id: uuidv4(),
         title: payload.title,
-        order: payload.count +1,
+        order: payload.order,
         parent_id: payload.parent_id,
         items: []
     }
@@ -74,7 +74,7 @@ export const addNewItem = ({commit}, payload) => {
     const newItem = {
         id: uuidv4(),
         title: payload.title,
-        order: payload.count + 1,
+        order: payload.order,
         parent_id: payload.parent_id,
         on_sale: payload.on_sale,
         price: payload.price,
@@ -93,4 +93,16 @@ export const deleteBrand = ({commit}, payload) => {
 
 export const deleteItem = ({commit}, payload) => {
     commit('deleteItem', payload)
+}
+
+export const editCategory = ({commit}, payload) => {
+    commit('editCategory', payload)
+}
+
+export const editBrand = ({commit}, payload) => {
+    commit('editBrand', payload)
+}
+
+export const editItem = ({commit}, payload) => {
+    commit('editItem', payload)
 }

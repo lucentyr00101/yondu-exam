@@ -1,17 +1,16 @@
 import { mapActions } from "vuex";
 
 export default {
-    props: ['dialog', 'brand'],
+    props: ['dialog', 'brand', 'create'],
     methods: {
         ...mapActions([
-            'addNewBrand'
+            'addNewBrand', 'editBrand'
         ]),
         closeModal() {
             Event.$emit('brandModalClosed')
         },
         insertNewBrand() {
-            console.log(this.brand)
-            this.addNewBrand(this.brand)
+            this.create ? this.addNewBrand(this.brand) : this.editBrand(this.brand)
             this.closeModal()
         }
     },

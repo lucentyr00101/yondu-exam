@@ -52,3 +52,24 @@ export const deleteItem = (state, payload) => {
         })
     })
 }
+
+export const editCategory =(state, payload) => {
+    const index = _.indexOf(state.items, payload)
+    state.items.splice(index, 1, payload)
+}
+
+export const editBrand = (state, payload) => {
+    _.forEach(state.items, category =>{
+        const index = _.indexOf(category.brands, payload)
+        category.brands.splice(index, 1, payload)
+    })
+}
+
+export const editItem = (state, payload) => {
+    _.forEach(state.items, category => {
+        _.forEach(category.brands, brand => {
+            const index = _.indexOf(brand.items, payload)
+            brand.items.splice(index, 1, payload)
+        })
+    })
+}

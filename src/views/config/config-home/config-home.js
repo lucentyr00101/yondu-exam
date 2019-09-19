@@ -5,11 +5,9 @@ export default {
         return {
             category: {
                 title: '',
-                count: 0,
             },
             brand: {
                 parent_id: '',
-                count: 0,
                 title: ''
             },
             item: {
@@ -20,13 +18,13 @@ export default {
                 on_sale: false,
                 price: '',
                 sale_price: '',
-                count: 0,
             },
             modals: {
                 category: false,
                 brand: false,
                 item: false
-            }
+            },
+            create: true,
         }
     },
     methods: {
@@ -35,17 +33,35 @@ export default {
         ]),
         triggerCategoryModal() {
             this.modals.category = true
-            this.category.count = this.getProducts.length
+            this.create = true
+            this.category.order = this.getProducts.length + 1
         },
         triggerBrandModal(length, category_id) {
             this.modals.brand = true
             this.brand.parent_id = category_id
-            this.brand.count = length
+            this.create = true
+            this.brand.order = length + 1
         },
         triggerItemModal(length, brand_id) {
             this.modals.item = true
             this.item.parent_id = brand_id
-            this.item.count = length
+            this.create = true
+            this.item.order = length + 1
+        },
+        editCategory(category) {
+            this.category = category
+            this.create = false
+            this.modals.category = true
+        },
+        editBrand(brand) {
+            this.brand = brand
+            this.create = false
+            this.modals.brand = true
+        },
+        editItem(item) {
+            this.item = item
+            this.create = false
+            this.modals.item = true
         }
     },
     computed: {
@@ -67,9 +83,24 @@ export default {
             this.modals.category = false
         })
         Event.$on('brandModalClosed', () => {
+            this.brand = {
+                parent_id: '',
+                count: 0,
+                title: ''
+            }
             this.modals.brand = false
         })
         Event.$on('itemModalClosed', () => {
+            this.item = {
+                id: '',
+                title: '',
+                order: '',
+                parent_id: '',
+                on_sale: false,
+                price: '',
+                sale_price: '',
+                count: 0,
+            }
             this.modals.item = false
         })
     },
