@@ -1,8 +1,33 @@
-div
-    div(v-if="items" v-for="item in getCart")
-        p {{ item.title }} - {{ item.quantity }} - {{ item.unit_price }} - {{ item.total_cost }}
-        v-btn(color="red" small @click="reduceQuantity(item)")
-            v-icon(small) mdi-minus
-        v-btn(color="blue" small @click="increaseQuantity(item)")
-            v-icon(small) mdi-plus
-    h1 Total Cost: {{ getTotalCost }}
+v-list
+    v-subheader
+        h1 Cart
+    v-divider
+    v-list-item(v-if="getCart.length === 0")
+        v-list-item-content
+            p No item in cart.
+    v-list-item(v-else v-for="(item, i) in getCart" :key="i")
+        v-list-item-content
+            v-container(fluid)
+                v-row(align-content="center" justify="center")
+                    v-col(cols="4")
+                        v-card.elevation-3(max-width="344")
+                            v-list-item
+                                v-list-item-title.headline {{ item.title }}
+                            v-img(src="https://dummyimage.com/600x400/000/fff.png")
+                    v-col(cols="4").d-flex.justify-center.align-center
+                        .quantity-container
+                            v-btn(color="red" fab small @click="reduceQuantity(item)")
+                                v-icon(small) mdi-minus
+                            h3.quantity {{ item.quantity }}
+                            v-btn(color="blue" fab small @click="increaseQuantity(item)")
+                                v-icon(small) mdi-plus
+                    v-col(cols="4").d-flex.justify-center.align-center
+                        p &#8369;{{ item.total_cost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
+
+    v-divider
+    v-list-item
+        v-list-item-content
+            v-container(fluid)
+                v-row
+                    v-col(cols="4" offset="8").d-flex.align-center.justify-center
+                        p Total Cost: &#8369;{{ getTotalCost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}

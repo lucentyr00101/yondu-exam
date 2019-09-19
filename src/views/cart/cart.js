@@ -15,5 +15,5 @@ export default {
         ...mapGetters([
             'getCart', 'getTotalCost'
         ])
-    },
+    }
 }
