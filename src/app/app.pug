@@ -12,9 +12,12 @@ v-app
         v-app-bar-nav-icon(@click.stop="drawer = !drawer")
         v-toolbar-title Vue
         .flex-grow-1
-        v-btn(outlined color="success" :to="{ name: 'cart' }")
-            v-icon(left) mdi-cart
-            | Show Cart
+        v-badge(color="red" left overlap)
+            template(v-slot:badge)
+                span {{ getCartItemsCount }}
+            v-btn(outlined color="success" :to="{ name: 'cart' }")
+                v-icon(left) mdi-cart
+                | Show Cart
 
     v-content
         v-container(fluid)

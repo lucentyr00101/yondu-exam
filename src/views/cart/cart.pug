@@ -4,7 +4,7 @@ v-list
     v-divider
     v-list-item(v-if="getCart.length === 0")
         v-list-item-content
-            p No item in cart.
+            span.title No item in cart.
     v-list-item(v-else v-for="(item, i) in getCart" :key="i")
         v-list-item-content
             v-container(fluid)
@@ -22,12 +22,11 @@ v-list
                             v-btn(color="blue" fab small @click="increaseQuantity(item)")
                                 v-icon(small) mdi-plus
                     v-col(cols="4").d-flex.justify-center.align-center
-                        p &#8369;{{ item.total_cost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
-
+                        span.title &#8369;{{ item.total_cost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
     v-divider
     v-list-item
         v-list-item-content
             v-container(fluid)
                 v-row
                     v-col(cols="4" offset="8").d-flex.align-center.justify-center
-                        p Total Cost: &#8369;{{ getTotalCost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
+                        span.title Total Cost: &#8369;{{ getTotalCost.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}

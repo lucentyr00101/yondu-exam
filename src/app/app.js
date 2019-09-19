@@ -1,4 +1,4 @@
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
     data() {
@@ -14,6 +14,11 @@ export default {
     methods: {
         ...mapActions([
             'setProducts'
+        ])
+    },
+    computed: {
+        ...mapGetters([
+            'getCartItemsCount'
         ])
     },
     mounted() {
