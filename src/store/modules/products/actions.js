@@ -6,37 +6,21 @@ export const setProducts = ({commit}) => {
     commit('setProducts', data)
 }
 
-function restructureData() {
-    let items = []
+const restructureData = () => {
+    shopItems.data = _.sortBy(shopItems.data, o => { o.order })
 
-    shopItems.data = _.sortBy(shopItems.data, o => { return o.order })
+    let items = _.filter(shopItems.data, x => { return x.parent_id === null })
 
-    _.forEach(shopItems.data, category => {
-        if(category.parent_id === null) {
-            category.brands = []
-            items.push(category)
-        }
+    _.filter(items, category => {
+        category.brands = _.filter(shopItems.data, shopItem => { return shopItem.parent_id === category.id })
     })
 
-    _.forEach(shopItems.data, item => {
-        _.forEach(items, category => {
-            if(item.parent_id === category.id) {
-                category.brands.push(item)
-            }
+    _.forEach(items, item => {
+        _.filter(item.brands, brand => {
+            brand.items = _.filter(shopItems.data, shopItem => { return shopItem.parent_id === brand.id })
         })
     })
 
-    _.forEach(items, category => {
-        _.forEach(category.brands, brand => {
-            brand.items = []
-            _.forEach(shopItems.data, item => {
-                if(brand.id === item.parent_id && item.price) {
-                    brand.items.push(item)
-                }
-            })
-        })
-    })
-    
     return items
 }
 
