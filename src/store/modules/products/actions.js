@@ -16,7 +16,7 @@ const restructureData = () => {
     })
 
     _.forEach(items, item => {
-        _.filter(item.brands, brand => {
+        _.forEach(item.brands, brand => {
             brand.items = _.filter(shopItems.data, shopItem => { return shopItem.parent_id === brand.id })
         })
     })
